@@ -14,9 +14,11 @@ pnpm dev
 ## Node と pnpm のバージョンについて
 
 volta で固定しています。
+
 このプロジェクトを使用する場合は [volta](https://volta.sh/) のセットアップを先に行ってください。
 
 セットアップに関しましては、こちらの記事を参考にしてください
+
 https://zenn.dev/xeiculy/articles/03871845342228
 
 ## CodeRabbitについて
@@ -51,6 +53,7 @@ pnpm dlx shadcn-ui@latest add button
 ```
 
 といった形でコンポーネントを追加してください。
+
 追加できるコンポーネントなど、詳しいことは[shadcn/ui](https://ui.shadcn.com/)の公式ドキュメントを御覧ください。
 
 `components.json`ファイルは、@shadcn/ui CLIツールを使用してプロジェクトにコンポーネントを追加する際の設定が書かれています。
