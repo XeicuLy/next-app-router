@@ -24,6 +24,7 @@ https://zenn.dev/xeiculy/articles/03871845342228
 ## CodeRabbitについて
 
 CodeRabbitによるレビューを受けたい場合は、CadeRabbitのサイトから設定を行う。
+
 特に使用しない場合は、coderabbitの設定ファイルである`coderabbit.yaml`は削除してください。
 
 ## 技術構成について
