@@ -1,0 +1,13 @@
+{
+  "eslint.experimental.useFlatConfig": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.configPath": "prettier.config.mjs",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
+}

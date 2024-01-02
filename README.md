@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# このプロジェクトについて
 
-## Getting Started
+Next.jsのapp-routerを用いたテンプレートリポジトリです。
 
-First, run the development server:
+## 開発環境構築方法
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000)にアクセスしてください。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Node と pnpm のバージョンについて
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+volta で固定しています。
 
-## Learn More
+このプロジェクトを使用する場合は [volta](https://volta.sh/) のセットアップを先に行ってください。
 
-To learn more about Next.js, take a look at the following resources:
+セットアップに関しましては、こちらの記事を参考にしてください
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+https://zenn.dev/xeiculy/articles/03871845342228
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## CodeRabbitについて
 
-## Deploy on Vercel
+CodeRabbitによるレビューを受けたい場合は、CadeRabbitのサイトから設定を行う。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+特に使用しない場合は、coderabbitの設定ファイルである`coderabbit.yaml`は削除してください。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 技術構成について
+
+| 技術/ツール       | 説明                                             |
+| ----------------- | ------------------------------------------------ |
+| Next.js           | Reactベースのフレームワークで、app-routerを採用  |
+| Tailwind CSS      | CSSフレームワーク                                |
+| TypeScript        | 静的型付けが特徴で、JavaScriptのスーパーセット   |
+| husky/lint-staged | コミット時に任意のコマンドを自動実行できるツール |
+| shadcn/ui         | UIコンポーネントライブラリ                       |
+| pnpm              | Nodeパッケージマネージャ                         |
+| volta             | Nodeなどのバージョン管理ツール                   |
+| Prettier          | コードフォーマッター                             |
+| ESLint            | コード書き方をチェックするツール                 |
+| vitest            | テスティングフレームワーク                       |
+| coderabbit        | AIレビューツール                                 |
+
+バージョンの詳細や、その他のツールについては`package.json`を参照してください。
+
+## shadcn/uiについて
+
+shadcn/ui は Radix UI をベースとして作られたコンポーネント集です。
+
+```bash
+pnpm dlx shadcn-ui@latest add button
+```
+
+といった形でコンポーネントを追加してください。
+
+追加できるコンポーネントなど、詳しいことは[shadcn/ui](https://ui.shadcn.com/)の公式ドキュメントを御覧ください。
+
+`components.json`ファイルは、@shadcn/ui CLIツールを使用してプロジェクトにコンポーネントを追加する際の設定が書かれています。
+
+このファイルには、プロジェクトのスタイル、React Server Components (RSC) の有効化、Tailwind CSSの設定、エイリアスの定義などが含まれています。
+
+## ディレクトリ構成のイメージ
+
+```sh
+src/
+├── app/
+│    └── _components/
+│          └── ui/
+├── lib/
+├── styles/
+├── types/
+└── utils/
+```
+
+| ディレクトリ                                       | 説明                                             |
+| -------------------------------------------------- | ------------------------------------------------ |
+| .husky                                             | huskyの設定ファイルを管理                        |
+| .vscode                                            | VSCodeの設定ファイルと推奨拡張機能ファイルを管理 |
+| public                                             | 画像ファイルなどを格納                           |
+| app                                                | ページに表示するものやコンポーネントを管理       |
+| &nbsp;&nbsp;&nbsp;&nbsp;layout.tsx                 | 共通のレイアウトファイル                         |
+| &nbsp;&nbsp;&nbsp;&nbsp;page.tsx                   | ルーティング対象ファイル                         |
+| &nbsp;&nbsp;&nbsp;&nbsp;\_components               | コンポーネントを管理                             |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ui | ボタンなど小さなUIコンポーネントを管理           |
+| lib                                                | ライブラリに依存した関数（初期設定など）を管理   |
+| styles                                             | CSSファイルを管理                                |
+| types                                              | グローバルに使用可能な型を管理                   |
+| utils                                              | 汎用的に使える関数を管理                         |
