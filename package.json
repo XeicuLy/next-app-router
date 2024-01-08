@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint --fix",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -21,7 +21,6 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@eslint/js": "^8.56.0",
     "@testing-library/react": "^14.1.2",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -33,6 +32,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
     "husky": "^8.0.3",
     "jsdom": "^23.0.1",
     "lint-staged": "^15.2.0",
@@ -44,8 +44,10 @@
     "vitest": "^1.1.1"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": "npx eslint --fix",
-    "**/*.{js,jsx,ts,tsx,json}": "npx prettier --write"
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --config .eslintrc.cjs --fix",
+      "prettier --config prettier.config.mjs --write"
+    ]
   },
   "volta": {
     "node": "20.10.0",
