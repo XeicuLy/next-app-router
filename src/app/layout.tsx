@@ -1,9 +1,9 @@
-import { Inter } from 'next/font/google';
+import '@/styles/globals.css';
+import { Noto_Sans_JP } from 'next/font/google';
 
 import type { Metadata } from 'next';
-import '@/styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const notoSansJP = Noto_Sans_JP({ subsets: ['latin'], variable: '--font-noto-sans-jp' });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='ja'>
-      <body className={inter.className}>{children}</body>
+      <body className={notoSansJP.className}>{children}</body>
     </html>
   );
 }
