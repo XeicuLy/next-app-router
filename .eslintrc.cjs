@@ -2,13 +2,22 @@ const config = {
   env: {
     browser: true,
     node: true,
+    es2021: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: true,
+    project: './tsconfig.json',
   },
-  plugins: ['import', '@typescript-eslint'],
-  extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  plugins: ['import', '@typescript-eslint', 'react-hooks', 'jsx-a11y'],
+  extends: [
+    'next',
+    'next/core-web-vitals',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:jsx-a11y/recommended',
+    'prettier',
+  ],
   rules: {
     'import/order': [
       'warn',
@@ -26,6 +35,15 @@ const config = {
         'newlines-between': 'always',
       },
     ],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'jsx-a11y/accessible-emoji': 'warn',
+    'react/react-in-jsx-scope': 'off',
+    'no-unused-vars': 'warn',
+    eqeqeq: 'error',
+    'no-console': 'warn',
+    'prefer-const': 'error',
   },
 };
+
 module.exports = config;
