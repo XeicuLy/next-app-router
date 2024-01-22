@@ -31,7 +31,6 @@ const config = {
             position: 'before',
           },
         ],
-        pathGroupsExcludedImportTypes: ['builtin', 'external', 'object', 'type'],
         'newlines-between': 'always',
       },
     ],
