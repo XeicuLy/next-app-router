@@ -66,8 +66,11 @@ pnpm dlx shadcn-ui@latest add button
 ```sh
 src/
 ├── app/
-│    └── _components/
-│          └── ui/
+│    ├── _components/
+│    │     └── ui/
+│    ├── layout.tsx
+│    ├── not-found.tsx
+│    └── page.tsx
 ├── lib/
 ├── styles/
 ├── types/
@@ -81,6 +84,7 @@ src/
 | public                                             | 画像ファイルなどを格納                           |
 | app                                                | ページに表示するものやコンポーネントを管理       |
 | &nbsp;&nbsp;&nbsp;&nbsp;layout.tsx                 | 共通のレイアウトファイル                         |
+| &nbsp;&nbsp;&nbsp;&nbsp;not-found.tsx              | 404ページ用ファイル                              |
 | &nbsp;&nbsp;&nbsp;&nbsp;page.tsx                   | ルーティング対象ファイル                         |
 | &nbsp;&nbsp;&nbsp;&nbsp;\_components               | コンポーネントを管理                             |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ui | ボタンなど小さなUIコンポーネントを管理           |
