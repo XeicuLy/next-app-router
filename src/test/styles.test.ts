@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/styles';
 
-describe('src/lib/utils.ts', () => {
+describe('src/lib/styles.ts', () => {
   it('偽値を無視する', () => {
     const result = cn('btn', '', null, undefined, false, 'btn-primary');
     expect(result).toBe('btn btn-primary');
