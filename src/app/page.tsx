@@ -1,17 +1,21 @@
 'use client';
 
+import { useState } from 'react';
+
 import { Button } from '@/app/_components/ui/button';
 
 export default function Home() {
+  const [state, setState] = useState(0);
+
   const handleClick = () => {
-    // eslint-disable-next-line no-console
-    console.log('click');
+    setState(state + 1);
   };
 
   return (
     <>
       <h1>こんにちは</h1>
-      <Button onClick={handleClick}>button</Button>
+      <div>state: {state}</div>
+      <Button onClick={handleClick}>increment number button</Button>
     </>
   );
 }
