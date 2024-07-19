@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint --fix",
     "test": "vitest",
+    "test:ui": "vitest --ui --coverage",
+    "test:coverage": "vitest --coverage",
     "prepare": "husky install"
   },
   "dependencies": {
