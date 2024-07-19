@@ -59,16 +59,42 @@ pnpm dlx shadcn-ui@latest add button
 
 ```sh
 src/
-├── app/
-│    ├── _components/
-│    │     └── ui/
-│    ├── layout.tsx
-│    ├── not-found.tsx
-│    └── page.tsx
-├── lib/
-├── styles/
-├── types/
-└── utils/
+│
+├── app/                 # Next.jsのApp Router用ディレクトリ(pagesディレクトリの役割)
+│   ├── layout.tsx       # ルートレイアウトファイル
+│   ├── page.tsx         # ルートページファイル
+│   ├── home/            # ホームページ
+│   │   ├── page.tsx     # ホームページのルートファイル
+│   │   └── layout.tsx   # ホームページのレイアウトファイル
+│   │
+│   └── profile/         # プロフィールページ
+│       ├── page.tsx     # プロフィールページのルートファイル
+│       └── layout.tsx   # プロフィールページのレイアウトファイル
+│
+├── components/          # 共通コンポーネント (Presentation Layer)
+│   ├── ui/              # 純粋なUIコンポーネント (Button, Modal)
+│   └── layout/          # レイアウトコンポーネント (Header, Footer)
+│
+├── features/            # 各ページごとの機能 (Feature Element)
+│   ├── home/            # ホームページ固有の機能 (Feature Element)
+│   │   ├── components/  # ホームページ固有のコンポーネント (Presentation Layer)
+│   │   ├── hooks/       # ホームページのカスタムフック (Business Logic Layer)
+│   │   └── api/         # ホームページ関連API呼び出し (Data Access Layer)
+│   │
+│   └── profile/         # プロフィールページ固有の機能 (Feature Element)
+│       ├── components/  # プロフィールページ固有のコンポーネント (Presentation Layer)
+│       ├── hooks/       # プロフィールのカスタムフック (Business Logic Layer)
+│       └── api/         # プロフィール関連API呼び出し (Data Access Layer)
+│
+├── hooks/               # グローバルなカスタムフック (Business Logic Layer)
+│
+├── utils/               # ユーティリティ関数 (Business Logic Layer)
+│
+├── api/                 # グローバルなAPI通信ロジック (Data Access Layer)
+│
+├── store/               # 状態管理 (Business Logic Layer)
+│
+└── styles/              # 共通スタイル (Presentation Layer)
 ```
 
 | ディレクトリ                                       | 説明                                             |
