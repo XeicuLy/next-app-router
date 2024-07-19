@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { cn } from '@/lib/styles';
+import { cn } from '@/lib/tailwind';
 
 describe('src/lib/styles.ts', () => {
   it('偽値を無視する', () => {
