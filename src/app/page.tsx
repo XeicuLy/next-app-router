@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { Button } from '@/app/_components/ui/button';
+import { Button } from '@/components/ui/button';
 
 export default function Home() {
   const [state, setState] = useState(0);
