@@ -109,16 +109,63 @@ src/
 ├── test/                  # テストファイルディレクトリ
 │   ├── e2e/               # エンドツーエンドテスト
 │   │   ├── home/          # ホームページのE2Eテスト
+│   │   │   └── home.e2e.test.ts
 │   │   └── profile/       # プロフィールページのE2Eテスト
+│   │       └── profile.e2e.test.ts
 │   │
 │   ├── integration/       # 統合テスト
 │   │   ├── home/          # ホームページの統合テスト
+│   │   │   └── home.integration.test.ts
 │   │   └── profile/       # プロフィールページの統合テスト
+│   │       └── profile.integration.test.ts
 │   │
 │   └── unit/              # ユニットテスト
-│       ├── components/    # コンポーネントのユニットテスト
-│       ├── hooks/         # カスタムフックのユニットテスト
+│       ├── api/           # グローバルなAPI通信ロジックのユニットテスト
+│       │   └── api.test.ts
+│       ├── app/           # appディレクトリのユニットテスト
+│       │   ├── layout.test.ts  # ルートレイアウトファイルのユニットテスト
+│       │   ├── page.test.ts    # ルートページファイルのユニットテスト
+│       │   ├── home/           # ホームページのユニットテスト
+│       │   │   ├── page.test.ts     # ホームページのルートファイルのユニットテスト
+│       │   │   └── layout.test.ts   # ホームページのレイアウトファイルのユニットテスト
+│       │   └── profile/        # プロフィールページのユニットテスト
+│       │       ├── page.test.ts    # プロフィールページのルートファイルのユニットテスト
+│       │       └── layout.test.ts  # プロフィールページのレイアウトファイルのユニットテスト
+│       ├── features/      # 各ページごとの機能のユニットテスト
+│       │   ├── home/      # ホームページのユニットテスト
+│       │   │   ├── api/   # ホームページ関連API呼び出しのユニットテスト
+│       │   │   │   └── homeApi.test.ts
+│       │   │   ├── components/    # ホームページ固有のコンポーネントのユニットテスト
+│       │   │   │   └── homeComponent.test.ts
+│       │   │   └── hooks/         # ホームページのカスタムフックのユニットテスト
+│       │   │       └── homeHook.test.ts
+│       │   └── profile/  # プロフィールページのユニットテスト
+│       │       ├── api/  # プロフィール関連API呼び出しのユニットテスト
+│       │       │   └── profileApi.test.ts
+│       │       ├── components/    # プロフィールページ固有のコンポーネントのユニットテスト
+│       │       │   └── profileComponent.test.ts
+│       │       └── hooks/         # プロフィールのカスタムフックのユニットテスト
+│       │           └── profileHook.test.ts
+│       ├── components/    # 共通コンポーネントのユニットテスト
+│       │   ├── layout/    # レイアウトコンポーネントのユニットテスト
+│       │   │   ├── header/    # ヘッダーコンポーネントのユニットテスト
+│       │   │   │   └── header.test.ts
+│       │   │   └── footer/    # フッターコンポーネントのユニットテスト
+│       │   │       └── footer.test.ts
+│       │   └── ui/        # 純粋なUIコンポーネントのユニットテスト
+│       │       ├── button/    # ボタンコンポーネントのユニットテスト
+│       │       │   └── button.test.ts
+│       │       └── modal/     # モーダルコンポーネントのユニットテスト
+│       │           └── modal.test.ts
+│       ├── hooks/         # グローバルなカスタムフックのユニットテスト
+│       │   ├── useAuth/   # 認証に関するカスタムフックのユニットテスト
+│       │   │   └── useAuth.test.ts
+│       │   └── useFetch/  # データフェッチに関するカスタムフックのユニットテスト
+│       │       └── useFetch.test.ts
+│       ├── lib/           # ライブラリに依存した関数のユニットテスト
+│       │   └── lib.test.ts
 │       ├── store/         # 状態管理のユニットテスト
+│       │   └── store.test.ts
 │       └── utils/         # ユーティリティ関数のユニットテスト
 │           └── someUtil.test.ts  # 具体的なユーティリティ関数のテストファイル
 │
