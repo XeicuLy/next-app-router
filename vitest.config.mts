@@ -10,6 +10,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
     },
+    include: ['**/unit/**/*.{test,spec}.?(c|m)[jt]s?(x)', '**/integration/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
   },
   resolve: {
     alias: {

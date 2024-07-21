@@ -26,6 +26,7 @@
     ".eslintrc.cjs",
     "prettier.config.mjs",
     "postcss.config.cjs",
+    "vitest.config.mts",
     "next-env.d.ts",
     "**/*.js",
     "**/*.jsx",
