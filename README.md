@@ -15,7 +15,7 @@ pnpm dev
 
 volta で固定しています。
 
-このプロジェクトを使用する場合は [volta](https://volta.sh/) のセットアップを先に行ってください。
+このプロジェクトでVolta使用する場合で未設定の場合は [volta](https://volta.sh/) のセットアップを先に行ってください。
 
 セットアップに関しましては、こちらの記事を参考にしてください
 
@@ -35,7 +35,6 @@ https://zenn.dev/xeiculy/articles/03871845342228
 | Prettier          | コードフォーマッター                             |
 | ESLint            | コード書き方をチェックするツール                 |
 | vitest            | テスティングフレームワーク                       |
-| coderabbit        | AIレビューツール                                 |
 
 バージョンの詳細や、その他のツールについては`package.json`を参照してください。
 
@@ -57,32 +56,120 @@ pnpm dlx shadcn-ui@latest add button
 
 ## ディレクトリ構成のイメージ
 
+以下はディレクトリ構成の一例です。
+
 ```sh
 src/
-├── app/
-│    ├── _components/
-│    │     └── ui/
-│    ├── layout.tsx
-│    ├── not-found.tsx
-│    └── page.tsx
-├── lib/
-├── styles/
-├── types/
-└── utils/
+│
+├── api/                   # グローバルなAPI通信ロジック (Data Access Layer)
+│
+├── app/                   # Next.jsのApp Router用ディレクトリ
+│   ├── layout.tsx         # ルートレイアウトファイル
+│   ├── page.tsx           # ルートページファイル
+│   ├── home/              # ホームページ
+│   │   ├── page.tsx       # ホームページのルートファイル
+│   │   └── layout.tsx     # ホームページのレイアウトファイル
+│   │
+│   └── profile/           # プロフィールページ
+│       ├── page.tsx       # プロフィールページのルートファイル
+│       └── layout.tsx     # プロフィールページのレイアウトファイル
+│
+├── components/            # 共通コンポーネント (Presentation Layer)
+│   ├── layout/            # レイアウトコンポーネント (header, footer)
+│   │   ├── header/        # ヘッダーコンポーネント
+│   │   └── footer/        # フッターコンポーネント
+│   └── ui/                # 純粋なUIコンポーネント (button, modal)
+│       ├── button/        # ボタンコンポーネント
+│       └── modal/         # モーダルコンポーネント
+│
+├── features/              # 各ページごとの機能 (Feature Element)
+│   ├── home/              # ホームページ固有の機能 (Feature Element)
+│   │   ├── api/           # ホームページ関連API呼び出し (Data Access Layer)
+│   │   ├── components/    # ホームページ固有のコンポーネント (Presentation Layer)
+│   │   └── hooks/         # ホームページのカスタムフック (Business Logic Layer)
+│   │
+│   └── profile/           # プロフィールページ固有の機能 (Feature Element)
+│       ├── api/           # プロフィール関連API呼び出し (Data Access Layer)
+│       ├── components/    # プロフィールページ固有のコンポーネント (Presentation Layer)
+│       └── hooks/         # プロフィールのカスタムフック (Business Logic Layer)
+│
+├── hooks/                 # グローバルなカスタムフック (Business Logic Layer)
+│   ├── useAuth/           # 認証に関するカスタムフック
+│   └── useFetch/          # データフェッチに関するカスタムフック
+│
+├── lib/                   # ライブラリに依存した関数 (Business Logic Layer)
+│
+├── store/                 # 状態管理 (Business Logic Layer)
+│
+├── styles/                # 共通スタイル (Presentation Layer)
+│   ├── globals.css        # グローバルスタイル
+│   ├── variables.css      # CSS変数
+│   └── mixins.css         # ミックスイン
+│
+├── test/                  # テストファイルディレクトリ
+│   ├── e2e/               # エンドツーエンドテスト
+│   │   ├── home/          # ホームページのE2Eテスト
+│   │   │   └── home.e2e.test.ts
+│   │   └── profile/       # プロフィールページのE2Eテスト
+│   │       └── profile.e2e.test.ts
+│   │
+│   ├── integration/       # 統合テスト
+│   │   ├── home/          # ホームページの統合テスト
+│   │   │   └── home.integration.test.ts
+│   │   └── profile/       # プロフィールページの統合テスト
+│   │       └── profile.integration.test.ts
+│   │
+│   └── unit/              # ユニットテスト
+│       ├── api/           # グローバルなAPI通信ロジックのユニットテスト
+│       │   └── api.test.ts
+│       ├── app/           # appディレクトリのユニットテスト
+│       │   ├── layout.test.ts  # ルートレイアウトファイルのユニットテスト
+│       │   ├── page.test.ts    # ルートページファイルのユニットテスト
+│       │   ├── home/           # ホームページのユニットテスト
+│       │   │   ├── page.test.ts     # ホームページのルートファイルのユニットテスト
+│       │   │   └── layout.test.ts   # ホームページのレイアウトファイルのユニットテスト
+│       │   └── profile/        # プロフィールページのユニットテスト
+│       │       ├── page.test.ts    # プロフィールページのルートファイルのユニットテスト
+│       │       └── layout.test.ts  # プロフィールページのレイアウトファイルのユニットテスト
+│       ├── features/      # 各ページごとの機能のユニットテスト
+│       │   ├── home/      # ホームページのユニットテスト
+│       │   │   ├── api/   # ホームページ関連API呼び出しのユニットテスト
+│       │   │   │   └── homeApi.test.ts
+│       │   │   ├── components/    # ホームページ固有のコンポーネントのユニットテスト
+│       │   │   │   └── homeComponent.test.ts
+│       │   │   └── hooks/         # ホームページのカスタムフックのユニットテスト
+│       │   │       └── homeHook.test.ts
+│       │   └── profile/  # プロフィールページのユニットテスト
+│       │       ├── api/  # プロフィール関連API呼び出しのユニットテスト
+│       │       │   └── profileApi.test.ts
+│       │       ├── components/    # プロフィールページ固有のコンポーネントのユニットテスト
+│       │       │   └── profileComponent.test.ts
+│       │       └── hooks/         # プロフィールのカスタムフックのユニットテスト
+│       │           └── profileHook.test.ts
+│       ├── components/    # 共通コンポーネントのユニットテスト
+│       │   ├── layout/    # レイアウトコンポーネントのユニットテスト
+│       │   │   ├── header/    # ヘッダーコンポーネントのユニットテスト
+│       │   │   │   └── header.test.ts
+│       │   │   └── footer/    # フッターコンポーネントのユニットテスト
+│       │   │       └── footer.test.ts
+│       │   └── ui/        # 純粋なUIコンポーネントのユニットテスト
+│       │       ├── button/    # ボタンコンポーネントのユニットテスト
+│       │       │   └── button.test.ts
+│       │       └── modal/     # モーダルコンポーネントのユニットテスト
+│       │           └── modal.test.ts
+│       ├── hooks/         # グローバルなカスタムフックのユニットテスト
+│       │   ├── useAuth/   # 認証に関するカスタムフックのユニットテスト
+│       │   │   └── useAuth.test.ts
+│       │   └── useFetch/  # データフェッチに関するカスタムフックのユニットテスト
+│       │       └── useFetch.test.ts
+│       ├── lib/           # ライブラリに依存した関数のユニットテスト
+│       │   └── lib.test.ts
+│       ├── store/         # 状態管理のユニットテスト
+│       │   └── store.test.ts
+│       └── utils/         # ユーティリティ関数のユニットテスト
+│           └── someUtil.test.ts  # 具体的なユーティリティ関数のテストファイル
+│
+├── types/                 # グローバルな型定義ファイル
+│
+└── utils/                 # ユーティリティ関数 (Business Logic Layer)
 ```
-
-| ディレクトリ                                       | 説明                                             |
-| -------------------------------------------------- | ------------------------------------------------ |
-| .husky                                             | huskyの設定ファイルを管理                        |
-| .vscode                                            | VSCodeの設定ファイルと推奨拡張機能ファイルを管理 |
-| public                                             | 画像ファイルなどを格納                           |
-| app                                                | ページに表示するものやコンポーネントを管理       |
-| &nbsp;&nbsp;&nbsp;&nbsp;layout.tsx                 | 共通のレイアウトファイル                         |
-| &nbsp;&nbsp;&nbsp;&nbsp;not-found.tsx              | 404ページ用ファイル                              |
-| &nbsp;&nbsp;&nbsp;&nbsp;page.tsx                   | ルーティング対象ファイル                         |
-| &nbsp;&nbsp;&nbsp;&nbsp;\_components               | コンポーネントを管理                             |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ui | ボタンなど小さなUIコンポーネントを管理           |
-| lib                                                | ライブラリに依存した関数（初期設定など）を管理   |
-| styles                                             | CSSファイルを管理                                |
-| types                                              | グローバルに使用可能な型を管理                   |
-| utils                                              | 汎用的に使える関数を管理                         |
