@@ -64,6 +64,14 @@
       "prettier --config prettier.config.mjs --write"
     ]
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.cts"
+    }
+  },
   "volta": {
     "node": "20.15.1",
     "pnpm": "9.5.0"
