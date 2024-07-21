@@ -8,5 +8,6 @@
   "prettier.configPath": "prettier.config.mjs",
   "files.associations": {
     "*.css": "tailwindcss"
-  }
+  },
+  "material-icon-theme.activeIconPack": "react_redux"
 }
