@@ -26,6 +26,8 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@testing-library/dom": "^10.3.2",
     "@testing-library/react": "^16.0.0",
     "@types/node": "^20.14.11",
     "@types/react": "^18.3.3",
@@ -37,6 +39,9 @@
     "@vitest/coverage-v8": "^2.0.3",
     "@vitest/ui": "^2.0.3",
     "autoprefixer": "^10.4.19",
+    "commitizen": "^4.3.0",
+    "commitlint-config-gitmoji": "^2.3.1",
+    "cz-customizable": "^7.2.1",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.5",
     "eslint-config-prettier": "^9.1.0",
@@ -58,6 +63,14 @@
       "eslint --config .eslintrc.cjs --fix",
       "prettier --config prettier.config.mjs --write"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.cts"
+    }
   },
   "volta": {
     "node": "20.15.1",
