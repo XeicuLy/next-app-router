@@ -1,5 +1,4 @@
 import { describe, expect, it } from 'vitest';
-
 import { cn } from '@/lib/tailwind';
 
 describe('src/lib/styles.ts', () => {

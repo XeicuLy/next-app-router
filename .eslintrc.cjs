@@ -30,7 +30,7 @@ const config = {
             position: 'before',
           },
         ],
-        'newlines-between': 'always',
+        'newlines-between': 'never',
       },
     ],
     'react-hooks/rules-of-hooks': 'error',
