@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
+    "@playwright/test": "^1.45.2",
     "@testing-library/dom": "^10.3.2",
     "@testing-library/react": "^16.0.0",
     "@types/node": "^20.14.11",
